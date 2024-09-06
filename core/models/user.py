@@ -11,6 +11,10 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+from uploader.models import Image
+
+
+
 class UserManager(BaseUserManager):
     """Manager for users."""
 
@@ -69,6 +73,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name=_("Usuário é da equipe"),
         help_text=_("Indica que este usuário pode acessar o Admin.")
     )
+    cpf_cnpj = models.CharField(max_length=14, blank=True, null=True)
+    telefone = models.CharField(max_length=11, blank=True, null=True)
+    endereco = models.CharField(max_length=255, blank=True, null=True)
+    observacoes = models.TextField(blank=True, null=True)
+    avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, default=None, blank=True, null=True)
+    # tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.PROTECT, blank=True, null=True)
 
     objects = UserManager()
 

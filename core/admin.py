@@ -52,3 +52,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Imoveis)
+admin.site.register(models.Agendamento)
+admin.site.register(models.Comodidade)
+admin.site.register(models.Categoria)
