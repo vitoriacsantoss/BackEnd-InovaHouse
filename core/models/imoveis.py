@@ -6,7 +6,14 @@ from .categoria import Categoria
 class Imoveis(models.Model):
     codigo = models.IntegerField()
     preco = models.DecimalField(max_digits=10, decimal_places=2)  
-    foto = models.ManyToManyField(Image, default=None, blank=True)
+    foto = models.ForeignKey(
+        Image,
+        related_name="+",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        default=None,
+    )
     localizacao = models.CharField(max_length=255, blank=True, null=True)
     metragem = models.IntegerField(blank=True, null=True)
     quantidade_quarto = models.IntegerField(default=1)
