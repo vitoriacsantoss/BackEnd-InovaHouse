@@ -1,5 +1,8 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+
 
 from drf_spectacular.views import (
     SpectacularAPIView,
@@ -39,4 +42,4 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     # API
     path("api/", include(router.urls)),
-]
+] + static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
