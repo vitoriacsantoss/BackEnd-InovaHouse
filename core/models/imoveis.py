@@ -4,6 +4,7 @@ from uploader.models import Image
 from .categoria import Categoria
 
 class Imoveis(models.Model):
+    nome = models.CharField(max_length=255)
     codigo = models.IntegerField()
     preco = models.DecimalField(max_digits=10, decimal_places=2)  
     foto = models.ForeignKey(
@@ -15,7 +16,7 @@ class Imoveis(models.Model):
         default=None,
     )
     localizacao = models.CharField(max_length=255, blank=True, null=True)
-    metragem = models.IntegerField(blank=True, null=True)
+    metragem = models.IntegerField()
     quantidade_quarto = models.IntegerField(default=1)
     quantidade_banheiro = models.IntegerField(default=1)
     quantidade_suite = models.IntegerField(default=1)
